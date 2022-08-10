@@ -1,19 +1,21 @@
 console.time("time");
 const chunk = (arr, nu) => {
-  const newArray = [];
+  const data = [];
   for (let i = 0; i < arr.length / nu; i++) {
-    const data = [];
+    let c = 0;
     for (let j = nu * i; j < nu * i + nu - 1; j++) {
       if (arr[j]) {
-        data.push(arr[j]);
+        if (!data[i]) data[i] = [];
+        data[i][c] = arr[j];
+        c++;
       }
     }
   }
-  return newArray;
+
+  return data;
 };
-
-const a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-console.log(chunk(a, 6));
-
 console.timeEnd("time");
+
+const a = Array.from(new Array(1000000000)).map((_, i) => i + 1);
+
+chunk(a, 6);
