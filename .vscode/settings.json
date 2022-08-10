@@ -1,0 +1,7 @@
+{
+  "prettier.singleQuote": false,
+  "prettier.jsxSingleQuote": false,
+  "files.associations": {
+    "*.js": "javascript"
+  }
+}
