@@ -2,7 +2,12 @@ console.time("time");
 const chunk = (arr, nu) => {
   const newArray = [];
   for (let i = 0; i < arr.length / nu; i++) {
-    newArray.push(arr.slice(nu * i, nu * i + nu));
+    const data = [];
+    for (let j = nu * i; j < nu * i + nu - 1; j++) {
+      if (arr[j]) {
+        data.push(arr[j]);
+      }
+    }
   }
   return newArray;
 };
