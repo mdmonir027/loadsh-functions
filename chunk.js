@@ -1,15 +1,14 @@
-const chunk = (arr = [], nu = 1) => {
-  const cloneArray = [...arr];
-  const loopCount = Math.ceil(cloneArray.length / nu);
+console.time("time");
+const chunk = (arr, nu) => {
   const newArray = [];
-  for (let i = 0; i < loopCount; i++) {
-    newArray.push(cloneArray.splice(0, nu));
+  for (let i = 0; i < arr.length / nu; i++) {
+    newArray.push(arr.slice(nu * i, nu * i + nu));
   }
   return newArray;
 };
 
-const a = ["a", "b", "c", "d"];
+const a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-console.log(chunk(a, 3));
+console.log(chunk(a, 6));
 
-console.log(a);
+console.timeEnd("time");
