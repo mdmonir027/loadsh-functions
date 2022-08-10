@@ -16,6 +16,6 @@ const chunk = (arr, nu) => {
 };
 console.timeEnd("time");
 
-const a = Array.from(new Array(1000000000)).map((_, i) => i + 1);
+const a = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11];
 
-chunk(a, 6);
+console.log(chunk(a, 6));
