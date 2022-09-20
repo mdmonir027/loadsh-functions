@@ -3,16 +3,16 @@ function difference(arr1, arr2) {
   const sortArr2 = arr2.sort();
 
   const data1 = [];
-  sortArr1.forEach((item) => {
-    if (!sortArr2.includes(item)) {
-      data1.push(item);
+  for (let i = 0; i < sortArr1.length; i++) {
+    if (!sortArr2.includes(sortArr1[i])) {
+      data1.push(sortArr1[i]);
     }
-  });
-  sortArr2.forEach((item) => {
-    if (!sortArr1.includes(item)) {
-      data1.push(item);
+  }
+  for (let i = 0; i < sortArr2.length; i++) {
+    if (!sortArr1.includes(sortArr2[i])) {
+      data1.push(sortArr2[i]);
     }
-  });
+  }
 
   return data1;
 }
