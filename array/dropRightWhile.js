@@ -1,47 +1,33 @@
 const dropRightWhile = (arg1, arg2) => {
+  const data = [];
   if (typeof arg2 === "function") {
-    const data = [];
     for (let i = 0; i < arg1.length; i++) {
-      const isOk = arg2(arg1[i]);
-      if (isOk) {
-        break;
-      }
+      if (arg2(arg1[i])) break;
       data.push(arg1[i][Object.keys(arg1[i])[0]]);
     }
-    return data;
   }
 
   if (typeof arg2 === "object" && !Array.isArray(arg2)) {
-    const data = [];
     for (let i = 0; i < arg1.length; i++) {
       if (JSON.stringify(arg1[i]) === JSON.stringify(arg2)) {
         break;
       }
       data.push(arg1[i][Object.keys(arg1[i])[0]]);
     }
-    return data;
   }
   if (typeof arg2 === "object" && Array.isArray(arg2)) {
-    const data = [];
     for (let i = 0; i < arg1.length; i++) {
-      if (arg1[i][arg2[0]] === arg2[1]) {
-        break;
-      }
+      if (arg1[i][arg2[0]] === arg2[1]) break;
       data.push(arg1[i][Object.keys(arg1[i])[0]]);
     }
-    return data;
   }
   if (typeof arg2 === "string") {
-    const data = [];
     for (let i = 0; i < arg1.length; i++) {
-      if (arg2 in arg1[i]) {
-        data.push(arg1[i][Object.keys(arg1[i])[0]]);
-      } else {
-        break;
-      }
+      if (!(arg2 in arg1[i])) break;
+      data.push(arg1[i][Object.keys(arg1[i])[0]]);
     }
-    return data;
   }
+  return data;
 };
 
 const users = [
