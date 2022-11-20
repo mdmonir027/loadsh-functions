@@ -1,16 +1,12 @@
 function fill(array, replacer, startIndex, endIndex) {
+  const getReplacer = (i, start, end) => {
+    if (!start) return replacer;
+    if (end) return i >= start && i < end ? replacer : array[i];
+    return i >= start ? replacer : array[i];
+  };
+
   for (let i = 0; i < array.length; i++) {
-    if (startIndex && !endIndex) {
-      if (i >= startIndex) {
-        array[i] = replacer;
-      }
-    } else if (startIndex && endIndex) {
-      if (i >= startIndex && i < endIndex) {
-        array[i] = replacer;
-      }
-    } else {
-      array[i] = replacer;
-    }
+    array[i] = getReplacer(i, startIndex, endIndex);
   }
   return array;
 }
